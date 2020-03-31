@@ -1,24 +1,43 @@
 class MyArray(object):
   def __init__(self):
-    self.length = 0
-    self.data = {}
+      self.length = 0
+      self.data = {}
 
   def get(self, index):
-    return self.data[index]
+      return self.data[index]
 
   def random(self):
-    return (" This is a random string ")
+      return (" This is a random string ")
 
   def add(self, value):
-    self.data[self.length] = value
-    self.length =+ 1
+      self.data[self.length] = value
+      self.length = self.length + 1
 
   def removeFirstValue(self):
-    pass
+      if self.length > 0:
+          firstItem = self.data[0]
+          del self.data[0]
+          self.length = self.length - 1
+          return firstItem
+      else:
+          error = "Array is empty"
+          return error
+
+  def removeLastValue(self):
+      lastItem = self.data[self.length - 1]
+      del self.data[self.length - 1]
+      self.length = self.length - 1
+      return lastItem
+
+
 
 
 arr = MyArray()
-arr.add(10)
+arr.add(70)
 arr.add(50)
+arr.add(100)
 #print (arr.random())
-print (arr.get(1))
+#print (arr.get(2))
+#print(arr.removeLastValue())
+print(arr.removeFirstValue())
+#print (arr.length)
