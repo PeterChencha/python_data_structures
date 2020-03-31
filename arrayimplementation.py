@@ -37,10 +37,6 @@ class MyArray(object):
             self.length = self.length - 1
             return lastItem
 
-
-
-
-
 arr = MyArray()
 # arr.add(70)
 # arr.add(50)
