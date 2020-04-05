@@ -1,5 +1,6 @@
 #Write function, given two strings, decide if one is a permutation of the other
 
+#TIME COMPLEXITY IS O(n) OWING TO THE SORTING
 def isPermutation(string1, string2):
     a = sorted(string1)
     b = sorted(string2)
