@@ -28,14 +28,14 @@ class LeftRotate(object):
         return self.array
 
     def leftRotateArray(self):
-        count = -1
+        count = 0
         while self.multiple > count:
             self.addLastItem()
             count = count + 1
 
         return self.array
 
-test_arr = [5,1,2,3,4]
+test_arr = [1,2,3,4,5]
 multiple = 4
 my_array = LeftRotate(test_arr, multiple)
 result = my_array.leftRotateArray()
