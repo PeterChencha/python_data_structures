@@ -34,8 +34,9 @@ class LinkedList(object):
 
         actualNode.nextNode = newNode
 
+    """O(N)"""
     def remove(self, data):
-        #FIRST CHECK IF EMPTY
+        #FIRST CHECK IF EMPTY m
         if self.head is None:
             return
         self.size = self.size - 1
@@ -62,7 +63,7 @@ class LinkedList(object):
             actualNode = actualNode.nextNode
 
 
-    def size(self):
+    def size_0f_linkedlist(self):
         return self.size
 
 test = LinkedList()
@@ -71,3 +72,4 @@ test.insertEnd(50)
 test.insertStart(10)
 test.remove(20)
 print(test.traverseList())
+print(test.size_0f_linkedlist())
