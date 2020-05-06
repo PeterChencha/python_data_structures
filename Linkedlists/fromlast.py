@@ -39,7 +39,7 @@ class LinkedList(object):
             actualNode = actualNode.nextNode
             no_of_nexts = no_of_nexts - 1
         value = actualNode.data
-        message = " The {} from last is {}".format(pointer, value)
+        message = "The {} from last is {}".format(pointer, value)
         return message
 
     """O(N)"""

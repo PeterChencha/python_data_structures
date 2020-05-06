@@ -34,6 +34,47 @@ class BinarySearchTree(object):
                 newNode = Node(data)
                 node.rightChild = newNode
 
+    def remove(self, data):
+        if self.root:
+            self.root = self.removeNode(data, self.root)
+
+    def removeNode(self, data, node):
+        if not node:
+            return node
+
+        if data < node.data:
+            node.leftChild = self.removeNode(data, node.leftChild)
+        elif data > node.data:
+            node.rightChild = self.removeNode(data, node.rightChild)
+        else:
+
+            if not node.leftChild and not node.rightChild:
+                print("Removing a leaf node")
+                del node
+                return None
+            if not node.leftChild:
+                print("Removing a node with single rightChild")
+                tempNode = node.rightChild
+                del node
+                return tempNode
+            elif not node.rightChild:
+                print("Removing node with single leftChild")
+                tempNode = node.leftChild
+                del node
+                return tempNode
+            print("Removing node with both children")
+            tempNode = self.getPredecessor(node.leftChild)
+            node.data = tempNode.data
+            node.leftChild = self.removeNode(tempNode.data, node.leftChild)
+
+        return node
+
+    def getPredecessor(self, node):
+        if node.rightChild:
+            return self.getPredecessor(node.rightChild)
+
+        return node
+
     def getMinValue(self):
         if self.root:
             return self.getMin(self.root)
@@ -65,3 +106,15 @@ class BinarySearchTree(object):
 
         if node.rightChild:
             self.traverseInOrder(node.rightChild)
+
+bst = BinarySearchTree()
+bst.insert(10)
+bst.insert(5)
+bst.insert(15)
+bst.insert(6)
+
+print("Min value:",bst.getMinValue())
+bst.traverse()
+bst.remove(5)
+bst.traverse()
+print("Min value:",bst.getMinValue())
