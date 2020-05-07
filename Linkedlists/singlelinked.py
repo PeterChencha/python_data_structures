@@ -52,7 +52,22 @@ class LinkedList(object):
         else:
             previousNode.nextNode = currentNode.nextNode
 
+    def find(self, value):
 
+        if self.head is None:
+            message = "LinkedList is empty"
+            return message
+
+        currentNode = self.head
+
+        while currentNode is not None:
+            if currentNode.data == value:
+                message = "{} was found in the LinkedList".format(value)
+                return message
+            elif currentNode.nextNode is None:
+                message = "{} was NOT found in the LinkedList".format(value)
+                return message
+            currentNode = currentNode.nextNode
 
     """O(N)"""
     def traverseList(self):
@@ -70,6 +85,9 @@ test = LinkedList()
 test.insertStart(20)
 test.insertEnd(50)
 test.insertStart(10)
+test.insertStart(13)
+test.insertStart(55)
 test.remove(20)
 print(test.traverseList())
 print(test.size_0f_linkedlist())
+print(test.find(100))
