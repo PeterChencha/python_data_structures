@@ -115,7 +115,23 @@ class LinkedList(object):
         value = actualNode.data
         message = "The {} from last is {}".format(pointer, value)
         return message
-    
+
+    def reverseLinkedList(self):
+
+        if self.head is None or self.head.nextNode is None:
+            return
+
+        currentNode = self.head
+        previous = None
+
+        while currentNode is not None:
+            temp = currentNode
+            currentNode = currentNode.nextNode
+            temp.nextNode = previous
+            previous = temp
+        self.head = previous
+
+
 
     """O(N)"""
     def traverseList(self):
@@ -139,3 +155,6 @@ test.remove(20)
 print(test.traverseList())
 print(test.size_0f_linkedlist())
 print(test.find(100))
+print("reverse list")
+test.reverseLinkedList()
+test.traverseList()
