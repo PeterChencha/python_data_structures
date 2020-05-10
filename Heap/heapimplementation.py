@@ -1,0 +1,78 @@
+class Heap(object):
+
+    HEAP_SIZE = 10
+    """docstring for Heap."""
+    def __init__(self):
+        super(Heap, self).__init__()
+        self.heap = [0] * Heap.HEAP_SIZE
+        self.currentPosition = -1
+
+    def insert(self, data):
+        if self.isFull():
+            message = "Heap is full"
+            return message
+        self.currentPosition = self.currentPosition + 1
+        self.heap[self.currentPosition] = data
+        self.fixUp(self.currentPosition)
+
+    def fixUp(self, index):
+        #IF PARENT HAS ONLY ONE CHILD, IT WOULD BE THE LEFT GOTTEN BY (2I+1)
+        #WHERE I IS INDEX OF PARENT
+        parentIndex = int((index - 1)/2)
+
+        while parentIndex >= 0 and self.heap[parentIndex] < self.heap[index]:
+            temp = self.heap[index]
+            self.heap[index] = self.heap[parentIndex]
+            self.heap[parentIndex] = temp
+            index = parentIndex
+            parentIndex = int((index - 1)/2)
+
+    def heapSort(self):
+
+        for i in range(0, self.currentPosition + 1):
+            temp = self.heap[0]
+            print("{}".format(temp))
+            self.heap[0] = self.heap[self.currentPosition - i]
+            self.heap[self.currentPosition - i] = temp
+            self.fixDown(0, self.currentPosition - i - 1)
+
+    def fixDown(self, index, upto):
+
+        while index <= upto:
+            leftChild = 2*index + 1
+            rightChild = 2*index + 2
+
+            if leftChild < upto :
+                childToSwap = None
+
+                if rightChild > upto:
+                    childToSwap = leftChild
+                else:
+                    if self.heap[leftChild] > self.heap[rightChild]:
+                        childToSwap = leftChild
+                    else:
+                        childToSwap = rightChild
+                if self.heap[index] < self.heap[childToSwap]:
+                    temp = self.heap[index]
+                    self.heap[index] = self.heap[childToSwap]
+                    self.heap[childToSwap] = temp
+                else:
+                    break
+
+                index = childToSwap
+            else:
+                break
+
+    def isFull(self):
+        if self.currentPosition == Heap.HEAP_SIZE:
+            return True
+        return False
+
+heap = Heap()
+heap.insert(10)
+heap.insert(20)
+heap.insert(-15)
+heap.insert(55)
+heap.insert(0)
+heap.insert(1)
+heap.heapSort()
