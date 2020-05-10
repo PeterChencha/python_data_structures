@@ -26,12 +26,12 @@ class LinkedListDivide(object):
             newNode.nextNode = self.head
             self.head = newNode
 
-    def reverseLinkedList(self, node):
+    def reverseLinkedList(self):
 
-        if node is None or node.nextNode is None:
+        if self.head is None or self.head.nextNode is None:
             return
 
-        currentNode = node
+        currentNode = self.head
         previous = None
 
         while currentNode is not None:
@@ -39,7 +39,23 @@ class LinkedListDivide(object):
             currentNode = currentNode.nextNode
             temp.nextNode = previous
             previous = temp
-        node = previous
+        self.head = previous
+
+    def reverseSecondLinkedList(self):
+
+        if self.head2 is None or self.head2.nextNode is None:
+            return
+
+        currentNode = self.head2
+        previous = None
+
+        while currentNode is not None:
+            temp = currentNode
+            currentNode = currentNode.nextNode
+            temp.nextNode = previous
+            previous = temp
+        self.head2 = previous
+
 
     def splitLinkedListAt(self, location):
 
@@ -67,30 +83,24 @@ class LinkedListDivide(object):
 
         self.splitLinkedListAt(splitAt)
 
+        if splitAt > self.size/2:
+            self.reverseSecondLinkedList()
+        elif splitAt < self.size/2:
+            self.reverseLinkedList()
+        else:
+            self.reverseLinkedList()
+
         firstCurrenNode = self.head
         secondCurrentNode = self.head2
-        print("Before reverse")
-        print(firstCurrenNode.data)
-        print(secondCurrentNode.data)
-
-        if splitAt > self.size/2:
-            self.reverseLinkedList(secondCurrentNode)
-        elif splitAt < self.size/2:
-            self.reverseLinkedList(firstCurrenNode)
-        else:
-            self.reverseLinkedList(firstCurrenNode)
-        print("After reverse")
-        print(firstCurrenNode.data)
-        print(secondCurrentNode.data)
-        while firstCurrenNode is None or secondCurrentNode is None:
+        while firstCurrenNode is not None or secondCurrentNode is not None:
             if firstCurrenNode.data == secondCurrentNode.data:
                 firstCurrenNode = firstCurrenNode.nextNode
                 secondCurrentNode = firstCurrenNode.nextNode
             else:
                 message = "Not Palindrome"
                 return message
-        message = "Is Palindrome"
-        return message
+            message = "Is Palindrome"
+            return message
 
 
     def traverseList(self):
@@ -115,6 +125,7 @@ class LinkedListDivide(object):
     def size_0f_linkedlist(self):
         return self.size
 
+#TEST THAT ISNT PALINDROME
 test = LinkedListDivide()
 test.insertStart(20)
 test.insertStart(10)
@@ -123,20 +134,40 @@ test.insertStart(55)
 test.insertStart(75)
 print("Original list before split")
 test.traverseList()
+print("Determine if palindrome")
 print(test.isPalindrome())
-#TEST SPLITTING
+
+
+#TEST IS PALINDROME
 # test = LinkedListDivide()
-# test.insertStart(20)
-# test.insertStart(10)
-# test.insertStart(13)
-# test.insertStart(55)
-# test.insertStart(75)
+# test.insertStart(9)
+# test.insertStart(1)
+# test.insertStart(0)
+# test.insertStart(1)
+# test.insertStart(9)
 # print("Original list before split")
 # test.traverseList()
-# print("size of original before split:", test.size_0f_linkedlist())
-# test.splitLinkedListAt(3)
-# print("Splited list")
-# test.traverseSplitList()
-# print("Original list after split")
+# print("Determine if palindrome")
+# print(test.isPalindrome())
+
+
+#TEST SPLITTING
+# test = LinkedListDivide()
+# test.insertStart(9)
+# test.insertStart(1)
+# test.insertStart(0)
+# test.insertStart(1)
+# test.insertStart(9)
+# print("Original list before split")
 # test.traverseList()
-# print("size of original list after split:", test.size_0f_linkedlist())
+# print("Original list after split")
+# test.splitLinkedListAt(3)
+# test.traverseList()
+# print("Reverse list after split")
+# test.reverseLinkedList()
+# test.traverseList()
+# print("Original list that resulted from split")
+# test.traverseSplitList()
+# print("Reverse of linked list that resulted from split")
+# test.reverseSecondLinkedList()
+# test.traverseSplitList()
