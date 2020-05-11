@@ -42,7 +42,8 @@ class TST(object):
         node = self.getItem(self.rootNode, key, 0)
 
         if node == None:
-            return -1
+            message = "Key does not exist"
+            return message
 
         return node.value
 
@@ -67,4 +68,4 @@ tst = TST()
 tst.put("apple", 100)
 tst.put("flowers", 10)
 tst.put("juice", -500)
-print(tst.get("juice"))
+print(tst.get("peter"))
