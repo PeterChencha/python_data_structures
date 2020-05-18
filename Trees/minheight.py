@@ -15,7 +15,7 @@ class BinarySearchTree(object):
         super(BinarySearchTree, self).__init__()
         self.arrayList = arrayList
         self.root = None
-        self.mid = len(self.arrayList)/2
+        self.mid = len(self.arrayList)//2
         self.right = self.mid + 1
         self.left = self.mid - 1
 
