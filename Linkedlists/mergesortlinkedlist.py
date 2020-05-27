@@ -52,6 +52,19 @@ class LinkedList(object):
         else:
             previousNode.nextNode = currentNode.nextNode
 
+    def mergeLists(self, list1, list2):
+
+        if list1 is None:
+            return list2
+        if list2 is None:
+            return list1
+
+        list1_node = list1.head
+        list2_node = list2.head
+
+        if list1_node.data <= list2_node.data:
+            temp_list =
+
     def sortLinkedList(self):
     """USING SELECTION SORT"""
         actualNode = self.head

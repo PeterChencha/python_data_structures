@@ -66,7 +66,35 @@ class BinaryTree(object):
                 actualNode.rightChild.visited = True
                 queue.append(actualNode.rightChild)
 
-    
+    def traversePre(self):
+        if self.root:
+            self.traverseInPreOrder(self.root)
+
+    def traverseInPreOrder(self, node):
+        print('{}'.format(node.data))
+
+        if node.leftChild:
+            self.traverseInPreOrder(node.leftChild)
+
+        if node.rightChild:
+            self.traverseInPreOrder(node.rightChild)
+
+    def traversePost(self):
+        if self.root:
+            self.traverseInPostOrder(self.root)
+
+    def traverseInPostOrder(self, node):
+
+        if node.leftChild:
+            self.traverseInPostOrder(node.leftChild)
+
+        if node.rightChild:
+            self.traverseInPostOrder(node.rightChild)
+
+        print('{}'.format(node.data))
+
+
+
 
 bst = BinaryTree()
 bst.insert(10)
@@ -77,4 +105,7 @@ bst.insert(4)
 bst.traverse()
 print("Using bfs")
 bst.traverseWithBFS()
-#print("Is Binary Tree", bst.is_tree())
+print('Using DFS Preorder')
+bst.traversePre()
+print('Using DFS Postorder')
+bst.traversePost()

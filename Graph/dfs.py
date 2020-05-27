@@ -1,3 +1,5 @@
+""" NOTE DONT RUN BOTH RECURSIVE AND ITERATIVE TOGETHER CAUSE THE ALL NODES WILL
+BE MARKED VISITED BY THE FIRST TO RUN"""
 class Node(object):
     """docstring for Node."""
     def __init__(self, name):
@@ -18,6 +20,21 @@ class DepthFirstSearch(object):
             if not n.visited:
                 self.dfs(n)
 
+    def dfs_iterative(self, node):
+        stack = []
+        stack.append(node)
+
+        while stack:
+            actualNode = stack.pop()
+            if not actualNode.visited:
+                print('{}'.format(actualNode.name))
+                actualNode.visited = True
+
+            for n in actualNode.adjacencyList:
+                if not n.visited:
+                    stack.append(n)
+
+
 node1 = Node("A")
 node2 = Node("B")
 node3 = Node("C")
@@ -31,3 +48,5 @@ node4.adjacencyList.append(node5)
 
 dfsInstance = DepthFirstSearch()
 dfsInstance.dfs(node1)
+print('Using dfs_iterative')
+dfsInstance.dfs_iterative(node1)
