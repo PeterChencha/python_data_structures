@@ -10,22 +10,22 @@ def reverseList(data):
 
 print(reverseList([1, 10, 11, 4]))
 
-"""CAN JUST USE list.reverse()"""
-# def reverseList(data):
-#     new_array = []
-#
-#     if len(data) == 0:
-#         return
-#
-#     # if len(data) > 0:
-#     #     last_value = data[-1]
-#     #     new_array.append(last_value)
-#     #     data.remove(last_value)
-#     #     print(new_array)
-#     #     reverseList(data)
-#
-#     last_value = data[-1]
-#     new_array.append(last_value)
-#     data.remove(last_value)
-#     print(new_array)
-#     reverseList(data)
+"""REVERSE IN PLACE"""
+
+def reverseInPlace(data):
+
+    start = 0
+    end = len(data) - 1
+
+    while start < end :
+        temp = data[start]
+        data[start] = data[end]
+        data[end] = temp
+        start = start + 1
+        end = end - 1
+
+    return data
+
+print("Using In place algorithm")
+print(reverseInPlace([1, 10, 11, 4, 77]))
+#print(reverseInPlace("OAK"))

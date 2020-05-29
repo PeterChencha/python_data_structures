@@ -14,8 +14,30 @@ def twoSum(arr, target):
     indices.append(first_index)
     indices.sort()
     return indices
-
+print("Initial solution")
 test_array = [1,4,3,2,6]
 target = 9
 result = twoSum(test_array, target)
+print(result)
+
+
+def twoSumOther(arr, target):
+    complement_set = set()
+    results = []
+
+    for i in range(len(arr)):
+        if arr[i] in complement_set:
+            results.append(arr[i])
+        else:
+            complement_set.add(target - arr[i])
+
+    first_number = target - results[0]
+    results.append(first_number)
+
+    return results
+
+print("Attempt at implementation from scratch")
+test_array = [1,4,3,2,6]
+target = 9
+result = twoSumOther(test_array, target)
 print(result)

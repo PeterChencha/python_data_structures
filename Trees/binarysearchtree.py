@@ -107,6 +107,25 @@ class BinarySearchTree(object):
         if node.rightChild:
             self.traverseInOrder(node.rightChild)
 
+    def findParent(self, value):
+
+        if self.root is None:
+            return
+
+        self.findParentHelper(self.root, value)
+
+    def findParentHelper(self, node, value):
+        if node is None:
+            return False
+
+        if node.data == value:
+            print(node.data)
+            return True
+
+        self.findParentHelper(node.leftChild, value)
+        self.findParentHelper(node.rightChild, value)
+
+
 bst = BinarySearchTree()
 bst.insert(10)
 bst.insert(5)
@@ -120,3 +139,5 @@ bst.remove(5)
 print("Removed an element")
 bst.traverse()
 print("Min value:",bst.getMinValue())
+print("Find parent")
+bst.findParent(6)

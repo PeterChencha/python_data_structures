@@ -16,3 +16,23 @@ def reverseBySlicing(string):
 test_string = "Hi my name is Peter"
 results = reverseBySlicing(test_string)
 print results
+
+
+def reverseStringUsingStack(string):
+    len_of_string = len(string)
+    stack = []
+
+    for i in range(len_of_string):
+        stack.append(string[i])
+
+    result = ""
+
+    for i in range(len_of_string):
+        result += stack.pop()
+
+    return result
+
+print("Testing using iteration")
+test_string = "Hi my name is Peter"
+results = reverseStringUsingStack(test_string)
+print results

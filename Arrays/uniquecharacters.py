@@ -1,10 +1,8 @@
 #Implement an alorithm to determine if a string has all unique characters. What if you cannot use additional data structures?
 
 import time
-#BOTH FUNCTION HAVE O(n) TIME COMPLEXITY
-#THOUGH SECOND FUNCTION HAS O(1) SPACE COMPLEXITY
-
 #IMPLEMENTATION WITH ADDITIONAL DATA STRUCTURE
+#IMPLEMENTATION HAS O(N) TIME COMPLEXITY
 def uniqueCharacters(string):
     t = time.process_time()
     unique = set()
@@ -13,7 +11,7 @@ def uniqueCharacters(string):
 
     if len(string) == len(unique):
         elapsed_time = time.process_time() - t
-        print (elapsed_time)
+        print(elapsed_time)
         return True
     else:
         elapsed_time = time.process_time() - t
@@ -21,22 +19,21 @@ def uniqueCharacters(string):
         return False
 
 #IMPLEMENTATION WITHOUT ADDITIONAL DATA STRUCTURE
-def uniqueCharactersNoExtraDataStructure(string):
-    t = time.process_time()
-    for _ in string:
-        if string.count(_) > 1:
-            elapsed_time = time.process_time() - t
-            print (elapsed_time)
-            return False
-        else:
-            elapsed_time = time.process_time() - t
-            print (elapsed_time)
-            return True
+#IMPLEMENTATION HAS O(N^2) TIME COMPLEXITY OWING TO THE TWO FOR LOOPS
+def uniqueCharactersNoBuiltIn(string):
+    string = string.lower()
+    for i in range(len(string)):
+        for j in range(i, len(string) - 1):
+            if string[i] == string[j + 1]:
+                return False
 
+    return True
 
 
 test = "Peter"
 test1 = "Pot"
+test2 = "KAyak"
+test3 = "Unique"
 #result = uniqueCharacters(test)
-result = uniqueCharactersNoExtraDataStructure(test)
+result = uniqueCharactersNoBuiltIn(test2)
 print (result)
