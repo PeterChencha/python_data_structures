@@ -52,18 +52,34 @@ class LinkedList(object):
         else:
             previousNode.nextNode = currentNode.nextNode
 
-    def mergeLists(self, list1, list2):
+    def mergeUsingMergeSort(self, node=self.head):
+        if node == None or node.next == None:
+            return node
 
-        if list1 is None:
-            return list2
-        if list2 is None:
-            return list1
+        middle_node = self.findMiddleNode(node)
+        second_head = middle_node.nextNode
 
-        list1_node = list1.head
-        list2_node = list2.head
+        middle.next = None
 
-        if list1_node.data <= list2_node.data:
-            temp_list =
+        left_half = mergeUsingMergeSort(node)
+        right_half = mergeUsingMergeSort(second_head)
+
+        sorted_list = self.mergelist(left_half, right_half)
+        return sorted_list
+
+    def findMiddleNode(self, node):
+        current = node
+        following = node
+
+        while following.nextNode.nextNode is not None:
+            current = currentNode.nextNode
+            following = following.nextNode.nextNode
+
+        return current
+
+    def mergelist(self, left_half, right_half):
+        pass
+
 
     def sortLinkedList(self):
     """USING SELECTION SORT"""
