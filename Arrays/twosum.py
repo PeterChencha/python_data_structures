@@ -27,14 +27,13 @@ def twoSumOther(arr, target):
 
     for i in range(len(arr)):
         if arr[i] in complement_set:
-            results.append(arr[i])
+            first_number = target - arr[i]
+            first_index = arr.index(first_number)
+            results.append(first_index)
+            results.append(i)
+            return results
         else:
             complement_set.add(target - arr[i])
-
-    first_number = target - results[0]
-    results.append(first_number)
-
-    return results
 
 print("Attempt at implementation from scratch")
 test_array = [1,4,3,2,6]
