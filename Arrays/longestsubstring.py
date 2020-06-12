@@ -39,8 +39,28 @@ def lengthLongest(s):
 
     return max
 
-test = "abcabcbb"
+def sliding_window(s):
+    left = 0
+    right = 0
+    letter_set = set()
+    max_length = 0
 
-result = lengthLongest(test)
+    while right < len(s):
+        if s[right] not in letter_set:
+            letter_set.add(s[right])
+            if len(letter_set) > max_length:
+                max_length = len(letter_set)
+            right = right + 1
+        else:
+            letter_set.remove(s[left])
+            left = left + 1
+
+    return max_length
+
+
+
+test = "pwwkew"
+
+result = sliding_window(test)
 
 print(result)
