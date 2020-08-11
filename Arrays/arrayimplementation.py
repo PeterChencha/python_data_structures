@@ -43,12 +43,12 @@ class MyArray(object):
         self.shiftItems(index)
         return item
 
-
     def shiftItems(self, index):
         for _ in range(index, (self.length - 1)):
             self.data[_] = self.data[_ + 1]
         del self.data[self.length - 1]
         self.length = self.length - 1
+
 
 arr = MyArray()
 arr.add(70)
