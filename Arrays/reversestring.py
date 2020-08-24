@@ -8,14 +8,16 @@ def reverseString(string):
 # results = reverseString(test_string)
 # print results
 
+
 def reverseBySlicing(string):
     len_of_string = len(string)
     slicedString = string[len_of_string::-1]
     return slicedString
 
-test_string = "Hi my name is Peter"
-results = reverseBySlicing(test_string)
-print results
+
+# test_string = "Hi my name is Peter"
+# results = reverseBySlicing(test_string)
+#print(results)
 
 
 def reverseStringUsingStack(string):
@@ -32,7 +34,8 @@ def reverseStringUsingStack(string):
 
     return result
 
-print("Testing using iteration")
+
+#print("Testing using iteration")
 test_string = "Hi my name is Peter"
 results = reverseStringUsingStack(test_string)
-print results
+print(results)
