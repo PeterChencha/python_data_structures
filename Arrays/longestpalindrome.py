@@ -36,4 +36,4 @@ def longestPalindrome(data):
 
 test = 'cbbd'
 result = longestPalindrome(test)
-print result
+print(result)
