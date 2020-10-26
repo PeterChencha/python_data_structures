@@ -49,10 +49,28 @@ class LinkedList(object):
             print(currentNode.data)
             currentNode = currentNode.nextNode
 
+    def remove(self, data):
+        if self.head is None:
+            print("Linkedlist is empty")
+
+        currentNode = self.head
+        previousNode = None
+
+        while currentNode.data != data:
+            previousNode = currentNode
+            currentNode = currentNode.nextNode
+
+        if previousNode is None:
+            self.head = currentNode.nextNode
+        else:
+            previousNode.nextNode = currentNode.nextNode
+
 
 test = LinkedList()
+test.traverse()
 test.insertStart(10)
 test.insertStart(50)
 test.insertStart(74)
 test.insertEnd(112)
+print("####################")
 test.traverse()
