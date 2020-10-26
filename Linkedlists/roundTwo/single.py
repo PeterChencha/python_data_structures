@@ -38,3 +38,21 @@ class LinkedList(object):
                 currentNode = currentNode.nextNode
 
             currentNode.nextNode = newNode
+
+    def traverse(self):
+        if self.head is None:
+            print("Linkedlist is empty")
+
+        currentNode = self.head
+
+        while currentNode is not None:
+            print(currentNode.data)
+            currentNode = currentNode.nextNode
+
+
+test = LinkedList()
+test.insertStart(10)
+test.insertStart(50)
+test.insertStart(74)
+test.insertEnd(112)
+test.traverse()
