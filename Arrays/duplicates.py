@@ -39,5 +39,5 @@ def removeDuplicatesGeeks(arr, n):
     return arr[:j]
 data = [1,1,2,2,2,3,4,4,5,5]
 # result = removeDuplicates(data)
-result_geeks = removeDuplicatesGeeks(data, len(data))
+result_geeks = removeDuplicates(data)
 print(result_geeks)
