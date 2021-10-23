@@ -8,6 +8,7 @@ def quick_sort(arr, low_index, high_index):
     quick_sort(arr, pivot_index+1, high_index)
     return arr
 
+
 def partition(arr, low_index, high_index):
 
     pivot_index = (low_index + high_index)//2
@@ -29,7 +30,8 @@ def swap(arr, i, j):
     arr[i] = arr[j]
     arr[j] = tempdata
 
-array = [1,25,3,55,0]
+
+array = [1, 25, 3, 55, 0]
 low_index = 0
 high_index = len(array) - 1
 print(quick_sort(array, low_index, high_index))
